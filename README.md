@@ -20,6 +20,16 @@ Install the package via Composer:
 composer require hcuro/nova-breadcrumb
 ```
 
+### Publish Assets (Windows or if symlinks don't work)
+
+If you encounter issues with missing assets, publish them to your public directory:
+
+```bash
+php artisan vendor:publish --tag=nova-breadcrumb-assets --force
+```
+
+This will copy the compiled assets to `public/vendor/nova-breadcrumb/`.
+
 ## Building Assets
 
 If you're developing or modifying this package, you'll need to build the JavaScript and CSS assets:
