@@ -1,0 +1,29 @@
+{
+  "name": "nova-breadcrumb",
+  "version": "1.0.0",
+  "description": "A Laravel Nova card for displaying customizable breadcrumb navigation",
+  "main": "dist/js/card.js",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "keywords": [
+    "laravel",
+    "nova",
+    "breadcrumb",
+    "card"
+  ],
+  "author": "hcuro",
+  "license": "MIT",
+  "devDependencies": {
+    "laravel-mix": "^6.0.0",
+    "vue": "^3.0.0",
+    "vue-loader": "^16.0.0",
+    "postcss": "^8.3.0"
+  }
+}

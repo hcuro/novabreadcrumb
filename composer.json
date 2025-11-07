@@ -1,0 +1,33 @@
+{
+    "name": "hcuro/nova-breadcrumb",
+    "description": "A Laravel Nova card for displaying customizable breadcrumb navigation",
+    "keywords": [
+        "laravel",
+        "nova",
+        "breadcrumb",
+        "card",
+        "navigation"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.0|^8.1|^8.2",
+        "laravel/nova": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hcuro\\NovaBreadcrumb\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hcuro\\NovaBreadcrumb\\CardServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

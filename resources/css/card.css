@@ -1,0 +1,17 @@
+/* Additional global styles for Nova Breadcrumb Card */
+
+/* Ensure the card has proper spacing when placed at the top of a resource */
+.nova-breadcrumb-card {
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nova-breadcrumb-card {
+    padding: 0.75rem 1rem;
+  }
+
+  .breadcrumb-list {
+    font-size: 0.8125rem;
+  }
+}
