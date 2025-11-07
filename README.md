@@ -122,6 +122,8 @@ Control the top spacing to remove Nova's default grid gap:
 
 By default, the breadcrumb respects Nova's grid spacing. Use `withoutTopSpacing()` to make it sit flush at the top of the page, or `topSpacing()` to set a custom margin-top value.
 
+**Responsive Behavior:** When using `withoutTopSpacing()`, the component automatically applies less aggressive negative margin on mobile devices (-0.75rem) to prevent overlap issues, and the full negative margin (-1.5rem) on desktop screens (≥768px).
+
 ### Real-World Examples
 
 #### E-commerce Product Hierarchy

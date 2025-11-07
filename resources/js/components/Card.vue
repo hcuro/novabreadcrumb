@@ -1,5 +1,5 @@
 <template>
-  <div class="nova-breadcrumb-card" :style="cardStyles">
+  <div class="nova-breadcrumb-card" :class="{ 'no-top-spacing': hasNoTopSpacing }" :style="cardStyles">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <ol class="breadcrumb-list">
         <li
@@ -74,14 +74,15 @@ export default {
     cardStyles() {
       const styles = {};
 
-      // Handle custom top spacing
-      if (this.card.noTopSpacing) {
-        styles.marginTop = '-1.5rem';
-      } else if (this.card.topSpacing) {
+      // Handle custom top spacing (only if not using the class-based approach)
+      if (this.card.topSpacing && !this.card.noTopSpacing) {
         styles.marginTop = this.card.topSpacing;
       }
 
       return styles;
+    },
+    hasNoTopSpacing() {
+      return this.card.noTopSpacing === true;
     },
   },
 };
@@ -94,6 +95,18 @@ export default {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
   padding: 1rem 1.5rem;
   margin-bottom: 0.75rem; /* Add a smaller gap below breadcrumb */
+}
+
+/* Responsive spacing control for mobile */
+.nova-breadcrumb-card.no-top-spacing {
+  margin-top: -0.75rem; /* Smaller negative margin on mobile */
+}
+
+/* Desktop spacing - full negative margin */
+@media (min-width: 768px) {
+  .nova-breadcrumb-card.no-top-spacing {
+    margin-top: -1.5rem; /* Full negative margin on desktop */
+  }
 }
 
 .breadcrumb-nav {
