@@ -1,15 +1,34 @@
-# Nova Breadcrumb Card
+# Nova Cards Collection
 
-A flexible Laravel Nova card component for displaying customizable breadcrumb navigation at the top of your resources.
+A collection of flexible Laravel Nova card components including breadcrumb navigation and text/HTML display cards.
+
+## Components
+
+### Nova Breadcrumb Card
+Displays customizable breadcrumb navigation at the top of your resources.
+
+### Nova Text Card
+Displays HTML content or comma-separated lists at the top of your resources.
 
 ## Features
 
+**Breadcrumb Card:**
 - Customizable breadcrumb items with labels and optional URLs
 - Flexible hierarchical structure support
 - Optional home icon for the first breadcrumb item
 - Customizable separator character
+
+**Text Card:**
+- Display rich HTML content
+- Display arrays as comma-separated lists
+- Customizable separators for lists
+- Text alignment control
+- Custom CSS classes support
+
+**Both Cards:**
 - Dark mode support
 - Responsive design
+- Spacing control methods
 - Compatible with Laravel Nova 4 & 5
 
 ## Installation
@@ -186,6 +205,154 @@ public function cards(NovaRequest $request)
     ];
 }
 ```
+
+---
+
+## Nova Text Card
+
+The `NovaTextCard` component allows you to display HTML content or comma-separated lists at the top of your resources.
+
+### Basic Usage
+
+#### Display HTML Content
+
+```php
+use Hcuro\NovaBreadcrumb\NovaTextCard;
+
+public function cards(NovaRequest $request)
+{
+    return [
+        (new NovaTextCard)->html('<strong>Important:</strong> This record is archived and cannot be edited.'),
+    ];
+}
+```
+
+#### Display Array as List
+
+```php
+public function cards(NovaRequest $request)
+{
+    return [
+        (new NovaTextCard)->items(['Active', 'Verified', 'Premium Member']),
+    ];
+}
+```
+
+### Advanced Usage
+
+#### Custom Separator
+
+Change the list separator (default is `, `):
+
+```php
+(new NovaTextCard)
+    ->items(['Tag 1', 'Tag 2', 'Tag 3'])
+    ->separator(' • ');
+```
+
+#### Text Alignment
+
+Control text alignment:
+
+```php
+(new NovaTextCard)
+    ->html('<p>Centered content</p>')
+    ->align('center'); // left, center, right
+```
+
+#### Remove Top Spacing
+
+Make the card sit flush at the top:
+
+```php
+(new NovaTextCard)
+    ->html('<p>This sits at the very top</p>')
+    ->withoutTopSpacing();
+```
+
+#### Custom CSS Classes
+
+Add custom CSS classes for additional styling:
+
+```php
+(new NovaTextCard)
+    ->html('<p class="my-custom-class">Custom styled content</p>')
+    ->classes('custom-wrapper-class');
+```
+
+### Real-World Examples
+
+#### Status Banner
+
+```php
+public function cards(NovaRequest $request)
+{
+    $user = $request->findResourceOrFail();
+
+    $badges = [];
+    if ($user->is_verified) $badges[] = 'Verified';
+    if ($user->is_premium) $badges[] = 'Premium';
+    if ($user->is_admin) $badges[] = 'Administrator';
+
+    return [
+        (new NovaTextCard)
+            ->items($badges)
+            ->separator(' | ')
+            ->withoutTopSpacing(),
+    ];
+}
+```
+
+#### Alert Message
+
+```php
+public function cards(NovaRequest $request)
+{
+    return [
+        (new NovaTextCard)
+            ->html('
+                <div style="padding: 0.5rem; background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 0.25rem;">
+                    <strong>Warning:</strong> This resource is scheduled for deletion in 30 days.
+                </div>
+            ')
+            ->withoutTopSpacing(),
+    ];
+}
+```
+
+#### Metadata Display
+
+```php
+public function cards(NovaRequest $request)
+{
+    $resource = $request->findResourceOrFail();
+
+    return [
+        (new NovaTextCard)->html("
+            <p><strong>Created:</strong> {$resource->created_at->format('M d, Y')}</p>
+            <p><strong>Last Updated:</strong> {$resource->updated_at->diffForHumans()}</p>
+            <p><strong>Author:</strong> {$resource->author->name}</p>
+        ")->withoutTopSpacing(),
+    ];
+}
+```
+
+#### Tags Display
+
+```php
+public function cards(NovaRequest $request)
+{
+    $post = $request->findResourceOrFail();
+
+    return [
+        (new NovaTextCard)
+            ->items($post->tags->pluck('name')->toArray())
+            ->separator(', '),
+    ];
+}
+```
+
+---
 
 ## Breadcrumb Item Structure
 
