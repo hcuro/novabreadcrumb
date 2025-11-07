@@ -81,6 +81,8 @@ export default {
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
   padding: 1rem 1.5rem;
+  margin-top: -1.5rem; /* Counteract Nova's gap-6 spacing */
+  margin-bottom: 0.75rem; /* Add a smaller gap below breadcrumb */
 }
 
 .breadcrumb-nav {
