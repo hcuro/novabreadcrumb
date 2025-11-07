@@ -1,6 +1,8 @@
 {
     "name": "hcuro/nova-breadcrumb",
+    "version": "1.0.1",
     "description": "A Laravel Nova card for displaying customizable breadcrumb navigation",
+    "type": "library",
     "keywords": [
         "laravel",
         "nova",
