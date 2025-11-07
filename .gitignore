@@ -8,6 +8,5 @@ yarn-error.log
 *.swp
 *.swo
 *~
-/dist
 composer.lock
 package-lock.json
