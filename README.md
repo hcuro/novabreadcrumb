@@ -10,7 +10,7 @@ A flexible Laravel Nova card component for displaying customizable breadcrumb na
 - Customizable separator character
 - Dark mode support
 - Responsive design
-- Full Nova 4 compatibility
+- Compatible with Laravel Nova 4 & 5
 
 ## Installation
 
@@ -189,8 +189,8 @@ By default, the card takes full width. You can customize this in the card class 
 
 ## Requirements
 
-- PHP 8.0 or higher
-- Laravel Nova 4.0 or higher
+- PHP 8.1 or higher
+- Laravel Nova 4.0 or 5.0
 - Vue 3
 
 ## License
