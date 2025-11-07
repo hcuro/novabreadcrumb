@@ -104,6 +104,24 @@ Display a home icon for the first breadcrumb item:
     ->showHomeIcon(); // Replaces first label with a home icon
 ```
 
+#### Spacing Control
+
+Control the top spacing to remove Nova's default grid gap:
+
+```php
+// Remove top spacing completely (sits flush at top)
+(new NovaBreadcrumb)
+    ->items([...])
+    ->withoutTopSpacing();
+
+// Set custom top spacing
+(new NovaBreadcrumb)
+    ->items([...])
+    ->topSpacing('-1rem'); // Can use any CSS value
+```
+
+By default, the breadcrumb respects Nova's grid spacing. Use `withoutTopSpacing()` to make it sit flush at the top of the page, or `topSpacing()` to set a custom margin-top value.
+
 ### Real-World Examples
 
 #### E-commerce Product Hierarchy

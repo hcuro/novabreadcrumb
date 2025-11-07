@@ -1,5 +1,5 @@
 <template>
-  <div class="nova-breadcrumb-card">
+  <div class="nova-breadcrumb-card" :style="cardStyles">
     <nav class="breadcrumb-nav" aria-label="Breadcrumb">
       <ol class="breadcrumb-list">
         <li
@@ -71,6 +71,18 @@ export default {
     separator() {
       return this.card.separator || '/';
     },
+    cardStyles() {
+      const styles = {};
+
+      // Handle custom top spacing
+      if (this.card.noTopSpacing) {
+        styles.marginTop = '-1.5rem';
+      } else if (this.card.topSpacing) {
+        styles.marginTop = this.card.topSpacing;
+      }
+
+      return styles;
+    },
   },
 };
 </script>
@@ -81,7 +93,6 @@ export default {
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
   padding: 1rem 1.5rem;
-  margin-top: -1.5rem; /* Counteract Nova's gap-6 spacing */
   margin-bottom: 0.75rem; /* Add a smaller gap below breadcrumb */
 }
 

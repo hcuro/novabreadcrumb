@@ -73,4 +73,25 @@ class NovaBreadcrumb extends Card
     {
         return $this->withMeta(['showHomeIcon' => $show]);
     }
+
+    /**
+     * Remove the top spacing/gap to sit flush at the top.
+     *
+     * @return $this
+     */
+    public function withoutTopSpacing()
+    {
+        return $this->withMeta(['noTopSpacing' => true]);
+    }
+
+    /**
+     * Set custom top spacing.
+     *
+     * @param  string  $spacing
+     * @return $this
+     */
+    public function topSpacing(string $spacing)
+    {
+        return $this->withMeta(['topSpacing' => $spacing]);
+    }
 }
